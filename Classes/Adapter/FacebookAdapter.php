@@ -209,6 +209,7 @@ class FacebookAdapter extends SocialMediaAdapter
                         comments.summary(total_count).limit(0).as(comments),
                         created_time,
                         full_picture,
+                        from,
                         reactions.summary(total_count).limit(0).as(reactions),
                         reactions.type(NONE).summary(total_count).limit(0).as(none),
                         reactions.type(LIKE).summary(total_count).limit(0).as(like),
