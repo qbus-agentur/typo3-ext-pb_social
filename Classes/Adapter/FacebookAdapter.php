@@ -153,7 +153,11 @@ class FacebookAdapter extends SocialMediaAdapter
         if (!empty($result)) {
             foreach ($result as $fb_feed) {
                 $rawFeeds[self::TYPE . '_' . $fb_feed->getCacheIdentifier() . '_raw'] = $fb_feed->getResult();
-                foreach ($fb_feed->getResult()->data as $rawFeed) {
+                $data = $fb_feed->getResult()->data;
+                if (empty($data)) {
+                  continue;
+                }
+                foreach ($data as $rawFeed) {
                     if ($options->onlyWithPicture && (empty($rawFeed->picture) || empty($rawFeed->full_picture))) {
                         continue;
                     }
