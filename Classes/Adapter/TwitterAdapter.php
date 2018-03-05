@@ -169,7 +169,8 @@ class TwitterAdapter extends SocialMediaAdapter
                 }
 
                 if (empty($twitterResult)) {
-                    error_log('empty status @TwitterAdapter');
+                    \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\CMS\Core\Log\LogManager')->getLogger(__CLASS__)->error('empty status @TwitterAdapter', ['result' => $result, 'options' => $options]);
+                    //error_log('empty status @TwitterAdapter');
                     break;
                 }
                 $rawFeeds[self::TYPE . '_' . $twt_feed->getCacheIdentifier() . '_raw'] = $twt_feed->getResult();
